@@ -1,34 +1,13 @@
- #include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include<algorithm>
-#include<random>
+#include <iostream>
 
 using namespace std;
-vector<int>COW(2,1);
-vector<int>PIG(2,2);
-vector<int>HORSE(2,3);
-vector<int>SHEEP(2,4);
-vector<int>FENCE(3,-1);
-
 int a[101][101];
-
-
-
-void afisarematrice()
-{
-    for (int  i = 0; i < 7; i++) {
-        for ( int j = 0; j < 9; j++)
-            cout << a[i][j] << " ";
-        cout << endl;
-    }
-
-}
-
+int dx[]={-2, 0, 2, 0};
+int dy[]={0, 2, 0, -2};
 void bordarematrice()
 {
-    for (i = 0; i < 7; i++)
-        for (j = 0; j < 9; j++)
+    for (int i = 0; i < 7; i++)
+        for (int j = 0; j < 9; j++)
         {
             a[0][j] = -1;
             a[i][0] = -1;
@@ -36,30 +15,651 @@ void bordarematrice()
             a[i][8] = -1;
         }
 }
-bool validgard(int i, int j);
+
+void citire()
 {
-    return i % 2 == 0 || j % 2 == 0;
+    int l = -5, n, pozitie1, pozitie2, pozitie3,pozitie4;
+    char piesa1, piesa2, piesa3, piesa4;
+    int i, j;
+    i=1;
+        
+            if (l == -5)
+            {
+                cout << "Va rog asezati piesele cum doriti:";
+                l = 0;
+            }
+        
+        cout << endl;
+        while(i<6)
+        {
+         
+            cout << "PE LINIA " << i << " ";
+            cout << "CATE PIESE DORITI ?" <<" ";
+            
+            do{
+              cin>>n;
+                  if(n<1||n>3)cout<<"NU PUTEM PUNE ATATEA PIESE, TREBUIE DIN [1,3]"<<endl;
+
+                }while(n<1||n>3);
+            cout << endl;
+
+            switch (i)
+            {
+            case 1:
+                switch (n)
+                { 
+
+                
+                case 1:
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";                  
+                    
+                    do{
+                      cin >> pozitie1;
+                  if(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7);
+                    cout << " ";
+                     do{
+                      cin>>piesa1;
+                  if(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+                  }while(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P');
+                    if(pozitie1==1)a[i][1]=int(piesa1);
+                    else if(pozitie1==3)a[i][3]=int(piesa1);
+                    else if(pozitie1==5)a[i][5]=int(piesa1);
+                    else if(pozitie1==7)a[i][7]=int(piesa1);
+                    break;
+                case 2:
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    
+                    do{
+                      cin>>pozitie1;
+                  if(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7);
+                    cout << " ";
+                    do{
+                      cin>>piesa1;
+                  if(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+                  }while(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P');
+                    cout << endl;
+                    
+                    do{
+                      cin >> pozitie2;
+                  if(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7);
+                    cout << " ";
+                    do{
+                      cin>>piesa2;
+                  if(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P');
+                     if(pozitie1==1)a[i][1]=int(piesa1);
+                    else if(pozitie1==3)a[i][3]=int(piesa1);
+                    else if(pozitie1==5)a[i][5]=int(piesa1);
+                    else if(pozitie1==7)a[i][7]=int(piesa1);
+                    if(pozitie2==1)a[i][1]=int(piesa2);
+                    else if(pozitie2==3)a[i][3]=int(piesa2);
+                    else if(pozitie2==5)a[i][5]=int(piesa2);
+                    else if(pozitie2==7)a[i][7]=int(piesa2);
+                    break;
+                case 3:
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    
+                    do{
+                      cin >> pozitie1;
+                  if(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7);
+                    
+                    cout << " ";
+                    do{
+                      cin>>piesa1;
+                  if(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P');
+                    cout << endl;
+                    do{
+                      cin>>pozitie2;
+                  if(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7);
+                    cout << " ";
+                    do{
+                      cin>>piesa2;
+                  if(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P');
+                    cout << endl;
+                    do{
+                      cin>>pozitie3;
+                  if(pozitie3!=1 || pozitie3!=3 || pozitie3!=5 || pozitie3!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie3!=1 || pozitie3!=3 || pozitie3!=5 || pozitie3!=7);
+                    cout << " ";
+                    do{
+                      cin>>piesa3;
+                  if(piesa3!='C' || piesa3!='V' || piesa3!='O' || piesa3!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa3!='C' || piesa3!='V' || piesa3!='O' || piesa3!='P');
+                     if(pozitie1==1)a[i][1]=int(piesa1);
+                    else if(pozitie1==3)a[i][3]=int(piesa1);
+                    else if(pozitie1==5)a[i][5]=int(piesa1);
+                    else if(pozitie1==7)a[i][7]=int(piesa1);
+                    if(pozitie2==1)a[i][1]=int(piesa2);
+                    else if(pozitie2==3)a[i][3]=int(piesa2);
+                    else if(pozitie2==5)a[i][5]=int(piesa2);
+                    else if(pozitie2==7)a[i][7]=int(piesa2);
+                    if(pozitie3==1)a[i][1]=int(piesa3);
+                    else if(pozitie3==3)a[i][3]=int(piesa3);
+                    else if(pozitie3==5)a[i][5]=int(piesa3);
+                    else if(pozitie3==7)a[i][7]=int(piesa3);
+                    break;
+                  case 4:
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    cin >> pozitie1;
+                    do{
+                  if(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7);
+                    cout << " ";                   
+                    do{
+                      cin>>piesa1;
+                  if(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P');
+                    cout << endl;
+                    
+                    do{
+                      cin>>pozitie2;
+                  if(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7);
+                    cout << " ";
+                    
+                    do{
+                      cin>>piesa2;
+                  if(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P');
+                    cout << endl;
+                    do{
+                      cin>>pozitie3;
+                  if(pozitie3!=1 || pozitie3!=3 || pozitie3!=5 || pozitie3!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie3!=1 || pozitie3!=3 || pozitie3!=5 || pozitie3!=7);
+                   cout<<" ";
+                    do{
+                      cin>>piesa3;
+                  if(piesa3!='C' || piesa3!='V' || piesa3!='O' || piesa3!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa3!='C' || piesa3!='V' || piesa3!='O' || piesa3!='P');
+                    
+                    
+                    
+                    cout<<endl;
+                    do{
+                      cin>>pozitie4;
+                  if(pozitie4!=1 || pozitie4!=3 || pozitie4!=5 || pozitie4!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie4!=1 || pozitie4!=3 || pozitie4!=5 || pozitie4!=7);
+                cout<<" ";
+                    
+                    do{
+                      cin>>piesa4;
+                  if(piesa4!='C' || piesa4!='V' || piesa4!='O' || piesa4!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa4!='C' || piesa4!='V' || piesa4!='O' || piesa4!='P');
+                    cout<<" ";
+                    
+                    
+                    
+                     if(pozitie1==1)a[i][1]=int(piesa1);
+                    else if(pozitie1==3)a[i][3]=int(piesa1);
+                    else if(pozitie1==5)a[i][5]=int(piesa1);
+                    else if(pozitie1==7)a[i][7]=int(piesa1);
+                    if(pozitie2==1)a[i][1]=int(piesa2);
+                    else if(pozitie2==3)a[i][3]=int(piesa2);
+                    else if(pozitie2==5)a[i][5]=int(piesa2);
+                    else if(pozitie2==7)a[i][7]=int(piesa2);
+                    if(pozitie3==1)a[i][1]=int(piesa3);
+                    else if(pozitie3==3)a[i][3]=int(piesa3);
+                    else if(pozitie3==5)a[i][5]=int(piesa3);
+                    else if(pozitie3==7)a[i][7]=int(piesa3);
+                    if(pozitie4==1)a[i][1]=int(piesa4);
+                    else if(pozitie4==3)a[i][3]=int(piesa4);
+                    else if(pozitie4==5)a[i][5]=int(piesa4);
+                    else if(pozitie4==7)a[i][7]=int(piesa4);
+                    break;
+                default:
+                    cout << "NUMAR INVALID DE PIESE" << endl;
+                    break;
+                }
+                break;
+            case 3:
+                switch (n)
+                { 
+
+                
+                case 1:
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";                  
+                    
+                    do{
+                      cin >> pozitie1;
+                  if(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7);
+                    cout << " ";
+                     do{
+                      cin>>piesa1;
+                  if(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+                  }while(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P');
+                    if(pozitie1==1)a[i][1]=int(piesa1);
+                    else if(pozitie1==3)a[i][3]=int(piesa1);
+                    else if(pozitie1==5)a[i][5]=int(piesa1);
+                    else if(pozitie1==7)a[i][7]=int(piesa1);
+                    break;
+                case 2:
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    
+                    do{
+                      cin>>pozitie1;
+                  if(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7);
+                    cout << " ";
+                    do{
+                      cin>>piesa1;
+                  if(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+                  }while(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P');
+                    cout << endl;
+                    
+                    do{
+                      cin >> pozitie2;
+                  if(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7);
+                    cout << " ";
+                    do{
+                      cin>>piesa2;
+                  if(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P');
+                     if(pozitie1==1)a[i][1]=int(piesa1);
+                    else if(pozitie1==3)a[i][3]=int(piesa1);
+                    else if(pozitie1==5)a[i][5]=int(piesa1);
+                    else if(pozitie1==7)a[i][7]=int(piesa1);
+                    if(pozitie2==1)a[i][1]=int(piesa2);
+                    else if(pozitie2==3)a[i][3]=int(piesa2);
+                    else if(pozitie2==5)a[i][5]=int(piesa2);
+                    else if(pozitie2==7)a[i][7]=int(piesa2);
+                    break;
+                case 3:
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    
+                    do{
+                      cin >> pozitie1;
+                  if(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7);
+                    
+                    cout << " ";
+                    do{
+                      cin>>piesa1;
+                  if(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P');
+                    cout << endl;
+                    do{
+                      cin>>pozitie2;
+                  if(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7);
+                    cout << " ";
+                    do{
+                      cin>>piesa2;
+                  if(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P');
+                    cout << endl;
+                    do{
+                      cin>>pozitie3;
+                  if(pozitie3!=1 || pozitie3!=3 || pozitie3!=5 || pozitie3!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie3!=1 || pozitie3!=3 || pozitie3!=5 || pozitie3!=7);
+                    cout << " ";
+                    do{
+                      cin>>piesa3;
+                  if(piesa3!='C' || piesa3!='V' || piesa3!='O' || piesa3!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa3!='C' || piesa3!='V' || piesa3!='O' || piesa3!='P');
+                     if(pozitie1==1)a[i][1]=int(piesa1);
+                    else if(pozitie1==3)a[i][3]=int(piesa1);
+                    else if(pozitie1==5)a[i][5]=int(piesa1);
+                    else if(pozitie1==7)a[i][7]=int(piesa1);
+                    if(pozitie2==1)a[i][1]=int(piesa2);
+                    else if(pozitie2==3)a[i][3]=int(piesa2);
+                    else if(pozitie2==5)a[i][5]=int(piesa2);
+                    else if(pozitie2==7)a[i][7]=int(piesa2);
+                    if(pozitie3==1)a[i][1]=int(piesa3);
+                    else if(pozitie3==3)a[i][3]=int(piesa3);
+                    else if(pozitie3==5)a[i][5]=int(piesa3);
+                    else if(pozitie3==7)a[i][7]=int(piesa3);
+                    break;
+                  case 4:
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    cin >> pozitie1;
+                    do{
+                  if(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7);
+                    cout << " ";                   
+                    do{
+                      cin>>piesa1;
+                  if(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P');
+                    cout << endl;
+                    
+                    do{
+                      cin>>pozitie2;
+                  if(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7);
+                    cout << " ";
+                    
+                    do{
+                      cin>>piesa2;
+                  if(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P');
+                    cout << endl;
+                    do{
+                      cin>>pozitie3;
+                  if(pozitie3!=1 || pozitie3!=3 || pozitie3!=5 || pozitie3!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie3!=1 || pozitie3!=3 || pozitie3!=5 || pozitie3!=7);
+                   cout<<" ";
+                    do{
+                      cin>>piesa3;
+                  if(piesa3!='C' || piesa3!='V' || piesa3!='O' || piesa3!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa3!='C' || piesa3!='V' || piesa3!='O' || piesa3!='P');
+                    
+                    
+                    
+                    cout<<endl;
+                    do{
+                      cin>>pozitie4;
+                  if(pozitie4!=1 || pozitie4!=3 || pozitie4!=5 || pozitie4!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie4!=1 || pozitie4!=3 || pozitie4!=5 || pozitie4!=7);
+                cout<<" ";
+                    
+                    do{
+                      cin>>piesa4;
+                  if(piesa4!='C' || piesa4!='V' || piesa4!='O' || piesa4!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa4!='C' || piesa4!='V' || piesa4!='O' || piesa4!='P');
+                    cout<<" ";
+                    
+                    
+                    
+                     if(pozitie1==1)a[i][1]=int(piesa1);
+                    else if(pozitie1==3)a[i][3]=int(piesa1);
+                    else if(pozitie1==5)a[i][5]=int(piesa1);
+                    else if(pozitie1==7)a[i][7]=int(piesa1);
+                    if(pozitie2==1)a[i][1]=int(piesa2);
+                    else if(pozitie2==3)a[i][3]=int(piesa2);
+                    else if(pozitie2==5)a[i][5]=int(piesa2);
+                    else if(pozitie2==7)a[i][7]=int(piesa2);
+                    if(pozitie3==1)a[i][1]=int(piesa3);
+                    else if(pozitie3==3)a[i][3]=int(piesa3);
+                    else if(pozitie3==5)a[i][5]=int(piesa3);
+                    else if(pozitie3==7)a[i][7]=int(piesa3);
+                    if(pozitie4==1)a[i][1]=int(piesa4);
+                    else if(pozitie4==3)a[i][3]=int(piesa4);
+                    else if(pozitie4==5)a[i][5]=int(piesa4);
+                    else if(pozitie4==7)a[i][7]=int(piesa4);
+                    break;
+                default:
+                    cout << "NUMAR INVALID DE PIESE" << endl;
+                    break;
+                }
+                break;
+            case 5:
+                switch (n)
+                { 
+
+                
+                case 1:
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";                  
+                    
+                    do{
+                      cin >> pozitie1;
+                  if(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7);
+                    cout << " ";
+                     do{
+                      cin>>piesa1;
+                  if(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+                  }while(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P');
+                    if(pozitie1==1)a[i][1]=int(piesa1);
+                    else if(pozitie1==3)a[i][3]=int(piesa1);
+                    else if(pozitie1==5)a[i][5]=int(piesa1);
+                    else if(pozitie1==7)a[i][7]=int(piesa1);
+                    break;
+                case 2:
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    
+                    do{
+                      cin>>pozitie1;
+                  if(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7);
+                    cout << " ";
+                    do{
+                      cin>>piesa1;
+                  if(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+                  }while(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P');
+                    cout << endl;
+                    
+                    do{
+                      cin >> pozitie2;
+                  if(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7);
+                    cout << " ";
+                    do{
+                      cin>>piesa2;
+                  if(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P');
+                     if(pozitie1==1)a[i][1]=int(piesa1);
+                    else if(pozitie1==3)a[i][3]=int(piesa1);
+                    else if(pozitie1==5)a[i][5]=int(piesa1);
+                    else if(pozitie1==7)a[i][7]=int(piesa1);
+                    if(pozitie2==1)a[i][1]=int(piesa2);
+                    else if(pozitie2==3)a[i][3]=int(piesa2);
+                    else if(pozitie2==5)a[i][5]=int(piesa2);
+                    else if(pozitie2==7)a[i][7]=int(piesa2);
+                    break;
+                case 3:
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    
+                    do{
+                      cin >> pozitie1;
+                  if(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7);
+                    
+                    cout << " ";
+                    do{
+                      cin>>piesa1;
+                  if(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P');
+                    cout << endl;
+                    do{
+                      cin>>pozitie2;
+                  if(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7);
+                    cout << " ";
+                    do{
+                      cin>>piesa2;
+                  if(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P');
+                    cout << endl;
+                    do{
+                      cin>>pozitie3;
+                  if(pozitie3!=1 || pozitie3!=3 || pozitie3!=5 || pozitie3!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie3!=1 || pozitie3!=3 || pozitie3!=5 || pozitie3!=7);
+                    cout << " ";
+                    do{
+                      cin>>piesa3;
+                  if(piesa3!='C' || piesa3!='V' || piesa3!='O' || piesa3!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa3!='C' || piesa3!='V' || piesa3!='O' || piesa3!='P');
+                     if(pozitie1==1)a[i][1]=int(piesa1);
+                    else if(pozitie1==3)a[i][3]=int(piesa1);
+                    else if(pozitie1==5)a[i][5]=int(piesa1);
+                    else if(pozitie1==7)a[i][7]=int(piesa1);
+                    if(pozitie2==1)a[i][1]=int(piesa2);
+                    else if(pozitie2==3)a[i][3]=int(piesa2);
+                    else if(pozitie2==5)a[i][5]=int(piesa2);
+                    else if(pozitie2==7)a[i][7]=int(piesa2);
+                    if(pozitie3==1)a[i][1]=int(piesa3);
+                    else if(pozitie3==3)a[i][3]=int(piesa3);
+                    else if(pozitie3==5)a[i][5]=int(piesa3);
+                    else if(pozitie3==7)a[i][7]=int(piesa3);
+                    break;
+                  case 4:
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    cin >> pozitie1;
+                    do{
+                  if(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie1!=1 || pozitie1!=3 || pozitie1!=5 || pozitie1!=7);
+                    cout << " ";                   
+                    do{
+                      cin>>piesa1;
+                  if(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa1!='C' || piesa1!='V' || piesa1!='O' || piesa1!='P');
+                    cout << endl;
+                    
+                    do{
+                      cin>>pozitie2;
+                  if(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie2!=1 || pozitie2!=3 || pozitie2!=5 || pozitie2!=7);
+                    cout << " ";
+                    
+                    do{
+                      cin>>piesa2;
+                  if(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa2!='C' || piesa2!='V' || piesa2!='O' || piesa2!='P');
+                    cout << endl;
+                    do{
+                      cin>>pozitie3;
+                  if(pozitie3!=1 || pozitie3!=3 || pozitie3!=5 || pozitie3!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie3!=1 || pozitie3!=3 || pozitie3!=5 || pozitie3!=7);
+                   cout<<" ";
+                    do{
+                      cin>>piesa3;
+                  if(piesa3!='C' || piesa3!='V' || piesa3!='O' || piesa3!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa3!='C' || piesa3!='V' || piesa3!='O' || piesa3!='P');
+                    
+                    
+                    
+                    cout<<endl;
+                    do{
+                      cin>>pozitie4;
+                  if(pozitie4!=1 || pozitie4!=3 || pozitie4!=5 || pozitie4!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
+
+                }while(pozitie4!=1 || pozitie4!=3 || pozitie4!=5 || pozitie4!=7);
+                cout<<" ";
+                    
+                    do{
+                      cin>>piesa4;
+                  if(piesa4!='C' || piesa4!='V' || piesa4!='O' || piesa4!='P')cout<<"UPS...ATI GRESIT PIESA,REINCERCATI"<<endl;
+
+                }while(piesa4!='C' || piesa4!='V' || piesa4!='O' || piesa4!='P');
+                    cout<<" ";
+                    
+                    
+                    
+                     if(pozitie1==1)a[i][1]=int(piesa1);
+                    else if(pozitie1==3)a[i][3]=int(piesa1);
+                    else if(pozitie1==5)a[i][5]=int(piesa1);
+                    else if(pozitie1==7)a[i][7]=int(piesa1);
+                    if(pozitie2==1)a[i][1]=int(piesa2);
+                    else if(pozitie2==3)a[i][3]=int(piesa2);
+                    else if(pozitie2==5)a[i][5]=int(piesa2);
+                    else if(pozitie2==7)a[i][7]=int(piesa2);
+                    if(pozitie3==1)a[i][1]=int(piesa3);
+                    else if(pozitie3==3)a[i][3]=int(piesa3);
+                    else if(pozitie3==5)a[i][5]=int(piesa3);
+                    else if(pozitie3==7)a[i][7]=int(piesa3);
+                    if(pozitie4==1)a[i][1]=int(piesa4);
+                    else if(pozitie4==3)a[i][3]=int(piesa4);
+                    else if(pozitie4==5)a[i][5]=int(piesa4);
+                    else if(pozitie4==7)a[i][7]=int(piesa4);
+                    break;
+                default:
+                    cout << "NUMAR INVALID DE PIESE" << endl;
+                    break;
+                }
+                break;
+            default:
+                cout << "PE ACEASTA LINIE NU SE POT PUNE PIESE" << endl;
+                break;
+             }
+             i+=2;
+        }
 }
-bool validpiese(int i, int j)
+bool ok(int i, int j)
 {
-    return i % 2 == 1 || j % 2 == 1;
+ if((i<1 || i>5 || j<1 || j>8) && (matrice[i][j]!=int('C')|| matrice[i][j]!=int('V')||matrice[i][j]!=int('O')||matrice[i][j]!=int('P')))
+ return false;
+ return true;
 }
-int randompiese()
+void fill(int x, int y)
 {
-        random_shuffle(a[i][j], COW[])
-        random_shuffle(a[i][j], PIG[])
-        random_shuffle(a[i][j], HORSE[])
-        random_shuffle(a[i][j], SHEEP[])
+  for(i=0;i<4;i++)
+  {
+    int i_nou=x+dx[i];
+    int j_nou=y+dy[i];
+    if(ok(i_nou, j_nou)
+    if(matrice[i_nou][j_nou])
+    {
+      fill(i_nou, j_nou);
+   }
+   else if()
+    
+      
+}
        
-}
+    
+  
 
 int main()
 {
+  bordarematrice();
+    citire();
+    for(int i=0;i<7;i++)
+    {
+     for(int j=0;j<9;j++)    
+       cout<<a[i][j]<<" ";
+       cout<<endl;
+    }
      
-
-       
-    
-    
-
     return 0;
 }

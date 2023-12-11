@@ -1,0 +1,95 @@
+//verifica daca gardurile au fost puse corect
+#include <iostream>
+using namespace std;
+int i,j,a[100][100],ok,k;
+int main()
+{ //fara apa, doar animale si garduri
+    //0=spatiu gol, -1=gard
+    for(i=0;i<=6;i++)
+        for(j=0;j<=8;j++)
+    {
+        cin>>a[i][j];
+    }
+    ok=1;
+    for(i=1;i<=5;i++)
+    for(j=1;j<=7;j++)
+    {//astea merg si pt caz general
+        if(a[i][j]!=0 && a[i][j]!=-1) // daca e animal
+        {
+            for(k=j;a[i][k]!=-1;k++) //pe linie spre dreapta
+            {
+                if(a[i][k]!=a[i][j]&&a[i][k]!=0&&a[i][k]!=-1)
+                    { ok=0; cout<<"asezare incorecta a gardului"; return 0;}
+                    if(a[i][k]!=-1)a[i][k]=a[i][j];//umplu spatiul gol(0) cu valorile pe care le am atribuit animalului
+            }
+            for(k=j;a[i][k]!=-1;k--) //pe linie spre spre stanga
+            {
+                if(a[i][k]!=a[i][j]&&a[i][k]!=0&&a[i][k]!=-1)
+                    { ok=0; cout<<"asezare incorecta a gardului"; return 0;}
+                    if(a[i][k]!=-1)a[i][k]=a[i][j];
+            }
+            for(k=i;a[k][j]!=-1;k++) //pe coloana in jos
+            {
+                if(a[k][j]!=a[i][j]&&a[k][j]!=0&&a[k][j]!=-1)
+                    { ok=0; cout<<"asezare incorecta a gardului"; return 0;}
+                    if(a[k][j]!=-1)a[k][j]=a[i][j];
+            }
+            for(k=i;a[k][j]!=-1;k++) //pe coloana in sus
+            {
+                if(a[k][j]!=a[i][j]&&a[k][j]!=0&&a[k][j]!=-1)
+                    { ok=0; cout<<"asezare incorecta a gardului"; return 0;}
+                    if(a[k][j]!=-1)a[k][j]=a[i][j];
+            }
+            int k1=i;
+            int k2=j;
+           while(a[k1][k2]!=-1)
+            {
+               k1--;
+               k2--;
+               if(a[k1][k2]!=a[i][j]&&a[k1][k2]!=0&&a[k1][k2]!=-1)
+               {
+                   { ok=0; cout<<"asezare incorecta a gardului"; return 0;}
+               }
+               if(a[k1][k2]!=-1) a[k1][k2]=a[i][j];
+            }//spre stanga sus-> diagonala
+            k1=i;
+            k2=j;
+             while(a[k1][k2]!=-1)
+            {
+               k1++;
+               k2++;
+               if(a[k1][k2]!=a[i][j]&&a[k1][k2]!=0&&a[k1][k2]!=-1)
+               {
+                   { ok=0; cout<<"asezare incorecta a gardului"; return 0;}
+               }
+               if(a[k1][k2]!=-1) a[k1][k2]=a[i][j];
+            }//spre dreapta jos-> diagonala
+            k1=i;
+            k2=j;
+             while(a[k1][k2]!=-1)
+            {
+               k1++;
+               k2--;
+               if(a[k1][k2]!=a[i][j]&&a[k1][k2]!=0&&a[k1][k2]!=-1)
+               {
+                   { ok=0; cout<<"asezare incorecta a gardului"; return 0;}
+               }
+               if(a[k1][k2]!=-1) a[k1][k2]=a[i][j];
+            }//spre stanga jos-> diagonala
+            k1=i;
+            k2=j;
+             while(a[k1][k2]!=-1)
+            {
+               k1--;
+               k2++;
+               if(a[k1][k2]!=a[i][j]&&a[k1][k2]!=0&&a[k1][k2]!=-1)
+               {
+                   { ok=0; cout<<"asezare incorecta a gardului"; return 0;}
+               }
+               if(a[k1][k2]!=-1) a[k1][k2]=a[i][j];
+            }//spre dreapta sus-> diagonala
+        }
+    }
+     if(ok) cout<<"bravos";
+    return 0;
+}

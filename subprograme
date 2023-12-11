@@ -19,28 +19,26 @@ void bordarematrice()
 
 void citire()
 {
-    int l = -5, n, pozitie1, pozitie2, pozitie3,pozitie4;
+    int m = -5, n, pozitie1, pozitie2, pozitie3,pozitie4;
     char piesa1, piesa2, piesa3, piesa4;
-    int i, j, q;
-    q=1;
+    int i, j, q, l;
+    i=1;
         
-            if (l == -5)
+            if (m == -5)
             {
                 cout << "Va rog asezati piesele cum doriti:";
-                l = 0;
+                m = 0;
             }
         
         cout << endl;
        int M=1;
      while(M==1)
      {  M=0;
-      for(i=0;i<7;i++)
-          for(j=0;j<9;j++)
-            a[i][j]=0;
-        while(q<6)
+      
+        while(i<6)
         {
          
-            cout << "PE LINIA " << q << " ";
+            cout << "PE LINIA " << i << " ";
             cout << "CATE PIESE DORITI ?" <<" ";
             
             do{
@@ -50,7 +48,7 @@ void citire()
                 }while(n<1||n>4);
             cout << endl;
 
-            switch (q)
+            switch (i)
             {
             case 1:
                 switch (n)
@@ -58,7 +56,7 @@ void citire()
 
                 
                 case 1:
-                    cout << "PE CE POZITIE DE PE LINIA " << q << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";                  
+                    cout << "PE CE POZITIE DE PE LINIA " << i<< "?(1,3,5,7), URMAT DE CE PIESA?" << " ";                  
                     
                     do{
                       cin >> pozitie1;
@@ -83,7 +81,7 @@ void citire()
                     else if(pozitie1==7)a[i][7]=int(piesa1);
                     break;
                 case 2:
-                    cout << "PE CE POZITIE DE PE LINIA " << q << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
                     
                     do{
                       cin>>pozitie1;
@@ -130,7 +128,7 @@ void citire()
                     else if(pozitie2==7)a[i][7]=int(piesa2);
                     break;
                 case 3:
-                    cout << "PE CE POZITIE DE PE LINIA " << q << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
                     
                     do{
                       cin >> pozitie1;
@@ -199,7 +197,7 @@ void citire()
                     else if(pozitie3==7)a[i][7]=int(piesa3);
                     break;
                   case 4:
-                    cout << "PE CE POZITIE DE PE LINIA " << q << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
                     cin >> pozitie1;
                     do{
                   if(pozitie1!=1 && pozitie1!=3 && pozitie1!=5 && pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
@@ -304,7 +302,7 @@ void citire()
 
                 
                 case 1:
-                    cout << "PE CE POZITIE DE PE LINIA " << q << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";                  
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";                  
                     
                     do{
                       cin >> pozitie1;
@@ -329,7 +327,7 @@ void citire()
                     else if(pozitie1==7)a[i][7]=int(piesa1);
                     break;
                 case 2:
-                    cout << "PE CE POZITIE DE PE LINIA " << q << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
                     
                     do{
                       cin>>pozitie1;
@@ -376,7 +374,7 @@ void citire()
                     else if(pozitie2==7)a[i][7]=int(piesa2);
                     break;
                 case 3:
-                    cout << "PE CE POZITIE DE PE LINIA " << q << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
                     
                     do{
                       cin >> pozitie1;
@@ -445,7 +443,7 @@ void citire()
                     else if(pozitie3==7)a[i][7]=int(piesa3);
                     break;
                   case 4:
-                    cout << "PE CE POZITIE DE PE LINIA " << q << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
                     cin >> pozitie1;
                     do{
                   if(pozitie1!=1 && pozitie1!=3 && pozitie1!=5 && pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
@@ -550,7 +548,7 @@ void citire()
 
                 
                 case 1:
-                    cout << "PE CE POZITIE DE PE LINIA " << q << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";                  
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";                  
                     
                     do{
                       cin >> pozitie1;
@@ -575,7 +573,7 @@ void citire()
                     else if(pozitie1==7)a[i][7]=int(piesa1);
                     break;
                 case 2:
-                    cout << "PE CE POZITIE DE PE LINIA " << q << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
                     
                     do{
                       cin>>pozitie1;
@@ -622,7 +620,7 @@ void citire()
                     else if(pozitie2==7)a[i][7]=int(piesa2);
                     break;
                 case 3:
-                    cout << "PE CE POZITIE DE PE LINIA " << q << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
                     
                     do{
                       cin >> pozitie1;
@@ -691,7 +689,7 @@ void citire()
                     else if(pozitie3==7)a[i][7]=int(piesa3);
                     break;
                   case 4:
-                    cout << "PE CE POZITIE DE PE LINIA " << q << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
+                    cout << "PE CE POZITIE DE PE LINIA " << i << "?(1,3,5,7), URMAT DE CE PIESA?" << " ";
                     cin >> pozitie1;
                     do{
                   if(pozitie1!=1 && pozitie1!=3 && pozitie1!=5 && pozitie1!=7)cout<<"UPS...ATI GRESIT INDICELE,REINCERCATI"<<endl;
@@ -794,11 +792,17 @@ void citire()
                 cout << "PE ACEASTA LINIE NU SE POT PUNE PIESE" << endl;
                 break;
              }
-             q+=2;
+             i+=2;
         
         }
-        if(cal==1 || vaca==1 || oaie==1 || porc==1 ) M=1;
-        
+        if(cal==1 || vaca==1 || oaie==1 || porc==1 ) {M=1;q=1; cout<<"VA RUGAM PUNETI AMBELE PERECHI DE PIESE";
+        for(q=0;q<7;q++)
+          for(l=0;l<9;l++)
+            a[i][j]=0;}
+        if(cal>2 || vaca>2 || oaie>2 || porc>2){M=1;q=1;cout<<"VA RUGAM PUNETI DOAR 2 PIESE DE ACELASI TIP";
+        for(q=0;q<7;q++)
+          for(l=0;l<9;l++)
+            a[i][j]=0;}
 
         
         
@@ -816,8 +820,8 @@ struct piesa
 vector<piesa> piese
 {
   {1,5,-1},
-  {3,1,-1},
-  {4,2,-1}
+  {3,1,-2},
+  {4,2,-3}
 };
 void afisareMatrice(int a[101][101])
 {
@@ -829,9 +833,14 @@ void afisareMatrice(int a[101][101])
   }
 
 }
-bool verifgard(int i, int j)
+bool verifgardlin(int i)
 {
-  if(i%2==0 && j%2==0)return true;
+  if(i%2==0 )return true;
+  return false;
+}
+bool verifgardcol( int j)
+{
+  if(j%2==0 )return true;
   return false;
 }
 
@@ -857,8 +866,9 @@ int main()
             
                 
                 int linie, coloana;
-                char orientare;
-                do{
+                char orientare,r=0;
+                while(r!=1)
+                {
                   
                 cout << "Introduceti linia pentru P" << piesa.nume << ": ";
                 cin >> linie;
@@ -870,46 +880,120 @@ int main()
                                 
                   
                 
-                if(verifgard(linie, coloana)==false)cout<<"NU PUTEM PUNE GARD AICI, VA ROG REINCERCATI"<<" ";
                 
 
-                }while(verifgard(linie, coloana)==false);
+                
                 do{
                   cout << "Introduceti orientarea pentru P" << piesa.nume << " (H pentru orizontal, V pentru vertical, C pentru colt): ";
                 cin >> orientare;
-                if(orientare!='C'&& orientare!='H' && orientare!='V' )cout<<"NU PUTEM PUNE GARDUL IN ACEASTA POZITIE, VA RUGAM REINCERCATI";
+                if(orientare=='H')
+                   if(verifgardlin(linie)==false){cout<<"NU PUTEM PUNE GARD AICI, VA ROG REINCERCATI"<<" ";r=1;}
+                    else r=0;
+                else{
+                  if(orientare=='V')
+
+                 if(verifgardcol(coloana)==false){cout<<"NU PUTEM PUNE GARD AICI, VA ROG REINCERCATI"<<" ";r=1;}
+                 else r=0;
+                    }
+                
+                if (orientare!='C'&& orientare!='H' && orientare!='V' ) 
+                cout<<"NU PUTEM PUNE GARDUL IN ACEASTA POZITIE, VA RUGAM REINCERCATI";
                 }while(orientare!='C'&& orientare!='H' && orientare!='V');
 
                 
                 if (orientare == 'H') {
-                    if (coloana + piesa.latime > nrColoane-2) {
+                  if(piesa.latime>piesa.lungime)
+                  {
+                    if (coloana + piesa.latime > nrColoane-1) {
                         cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
                     }
-                     else{for (int i = 0; i <= piesa.latime; ++i) {
+                    
+                     else{for (int i = 0; i < piesa.latime; ++i) {
                         a[linie ][coloana  + i] = piesa.nume;
                     }
                     l++;afisareMatrice(a);
                      }
+                  }
+                     else{ if(coloana+piesa.lungime>nrColoane-1)
+                             cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                              else{for (int i = 0; i < piesa.lungime; ++i) {
+                                            a[linie ][coloana  + i] = piesa.nume;}
+                                             l++;afisareMatrice(a);
+                              }
+                     }
+
+
                 } else if (orientare == 'V') {
-                    if (linie + piesa.lungime > nrLinii-2) {
+                  if(piesa.lungime> piesa.latime)
+                  {
+                    if (linie + piesa.lungime > nrLinii-1) {
                         cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
                     }
-                     else{ for (int i = 0; i <= piesa.lungime; ++i) {
+                     else{ for (int i = 0; i <piesa.lungime; ++i) {
                         a[linie  + i][coloana ] = piesa.nume;
                     }
+                    
                     l++;afisareMatrice(a);
+                     }
+                  }
+                      
+                    else{ if(linie+piesa.latime>nrLinii-1)
+                       cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                              else{for (int i = 0; i < piesa.latime; ++i) {
+                                    a[linie  + i][coloana ] = piesa.nume;
+                                                           }
+                                                            l++;afisareMatrice(a);}
                        }
+                       
                 }else if(orientare=='C')
-                        {
-                         if(coloana+piesa.latime > nrColoane-2 && linie + piesa.lungime > nrLinii-2)
-                           cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
-                           else{ for (int i = 0; i <= piesa.lungime; ++i) {
-                                         a[linie+i ][coloana] = piesa.nume;
-                                                                  } 
-                                     for (int i = 0; i <= piesa.latime; ++i) {
-                                    a[linie][coloana+i] = piesa.nume;}
-                                    l++;
-                           }
+                         { cout<<"VRETI PIESA ORIZONTALA SAU VERTICALA(H, V)?"cin>>poz1;
+                         cout<<<"CUM VRETI SA FIE ORIENTAT CAPUL PIESEI?IN STANGA SAU IN DREAPTA?(V, E)"cin>>poz2;
+                            cout<<<"CUM VRETI SA FIE ORIENTAT CAPUL PIESEI?IN SUS SAU IN JOS?(N, S)"cin>>poz3;
+                           
+                             if(poz1=='H')
+                             
+                              if(coloana+piesa.latime>nrColoane-1)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                              else{
+                              for(i=0;i<piesa.lungime;;i++)
+                                 a[linie+i][coloana]=piesa.nume;
+                                 if(poz2=='E')
+                                 
+                                   if(poz3=='N')
+                                     {
+                                      if(coloana-piesa.latime<nrLinii-1)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                      else{
+                                       for(i=0;i=<piesa.latime;i++)
+                                        a[coloana+piesa.latime-1 -i][coloana+piesa.latime-1]=piesa.nume;
+                                           } if(poz3=='S') {
+                                      for(i=0;i=<piesa.latime;i++)
+                                         a[coloana+piesa.latime-1 +i][coloana+piesa.latime-1]=piesa.nume
+                                           }}
+                                 else if(poz2=='V')
+                                 {
+                                  
+                                  if(poz3=='N')
+                                  { if(coloana-piesa.latime<nrLinii-1)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                  else {
+                                    for(i=0;i<=piesa.latime;i++)
+                                       a[linie-i][coloana]=piesa.nume;
+                                  }}
+                                  else{
+                                    if(coloana+piesa.latime<nrLinii-1)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                    else{
+                                    for(i=0;i<=piesa.latime;i++)
+                                       a[linie +i][coloana]=piesa.nume;
+                                  }
+                                 }
+                                 }
+                                     }else if(poz1==V)
+                                     {
+                                          if()
+                                     }
+                                     
+
+                                     
+                                 
+                             
                                                              
                           } 
                 }
@@ -918,7 +1002,7 @@ int main()
                 if(l==3){cout << "Matrice dupa asezare:" << endl;
                 afisareMatrice(a);
                 }
-    
+        }
                 
     
                

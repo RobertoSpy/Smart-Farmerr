@@ -16,7 +16,7 @@ void bordarematrice()
             a[i][8] = -1;
         }
 }
-
+int i;
 void citire()
 {
     int m = -5, n, pozitie1, pozitie2, pozitie3,pozitie4;
@@ -946,49 +946,116 @@ int main()
                        }
                        
                 }else if(orientare=='C')
-                         { cout<<"VRETI PIESA ORIZONTALA SAU VERTICALA(H, V)?"cin>>poz1;
-                         cout<<<"CUM VRETI SA FIE ORIENTAT CAPUL PIESEI?IN STANGA SAU IN DREAPTA?(V, E)"cin>>poz2;
-                            cout<<<"CUM VRETI SA FIE ORIENTAT CAPUL PIESEI?IN SUS SAU IN JOS?(N, S)"cin>>poz3;
+                         { cout<<"VRETI PIESA ORIZONTALA SAU VERTICALA(H, V)?";cin>>poz1;
+                         
+                            
                            
                              if(poz1=='H')
+                             {
+                                if(coloana+piesa.lungime>nrColoane-1)
+                                cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                else{
+                                    for(i=0;i<piesa.lungime;i++)
+                                      a[linie][coloana+i]=piesa.nume;
+                               cout<<<"CUM VRETI SA FIE ORIENTAT CAPUL PIESEI?IN STANGA SAU IN DREAPTA?(V, E)";cin>>poz2;
+                               cout<<<"CUM VRETI SA FIE ORIENTAT CAPUL PIESEI?IN SUS SAU IN JOS?(N, S)";cin>>poz3;
+                               if(poz2=='V')
+                               {
+                                if(poz3=='N'){
+                                  if(linie-piesa.latime<=0)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                   else{
+                                          for(i=0;i<piesa.latime;i++)
+                                            a[linie-i][coloana]=piesa.nume;
+                                             
+                                       }
+                                       l++;afisareMatrice(a);
+                                }
+                                       else if(poz3=='S')
+                                             {
+                                              if(linie+piesa.latime>nrLinii-1)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                              else {
+                                                 for(i=0;i<piesa.latime;i++)
+                                            a[linie+i][coloana]=piesa.nume;
+                                              }
+                                              l++;afisareMatrice(a);
+                                             }
+                               }  else if(poz2=='E')
+                               {
+                                if(poz3=='N'){
+                                  if(linie-piesa.latime<=0)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                   else{
+                                          for(i=0;i<piesa.latime;i++)
+                                            a[linie-i][coloana+piesa.lungime-1]=piesa.nume;
+                                             
+                                       }
+                                       l++;afisareMatrice(a);
+                                }
+                                       else if(poz3=='S')
+                                             {
+                                              if(linie+piesa.latime>nrLinii-1)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                              else {
+                                                 for(i=0;i<piesa.latime;i++)
+                                            a[linie+i][coloana+piesa.lungime-1]=piesa.nume;
+                                              }
+                                              l++;afisareMatrice(a);
+                                             }
+                               }
+                               else if(poz1=='V')
+                               {
+                                if(linie+piesa.lungime>nrLinii-1)
+                                cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                else{
+                                    for(i=0;i<piesa.lungime;i++)
+                                      a[linie+i][coloana]=piesa.nume;
+                               cout<<<"CUM VRETI SA FIE ORIENTAT CAPUL PIESEI?IN STANGA SAU IN DREAPTA?(N, S)";cin>>poz2;
+                               cout<<<"CUM VRETI SA FIE ORIENTAT CAPUL PIESEI?IN SUS SAU IN JOS?(V, E)";cin>>poz3;
+                               if(poz2=='N')
+                               {
+                                if(poz3=='V'){
+                                  if(coloana-piesa.latime<=0)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                   else{
+                                          for(i=0;i<piesa.latime;i++)
+                                            a[linie][coloana-i]=piesa.nume;
+                                             
+                                       }
+                                       l++;afisareMatrice(a);
+                                }
+                                       else if(poz3=='E')
+                                             {
+                                              if(coloana+piesa.latime>nrColoane-1)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                              else {
+                                                 for(i=0;i<piesa.latime;i++)
+                                            a[linie][coloana+i]=piesa.nume;
+                                              }
+                                              l++;afisareMatrice(a);
+                                             }
+                               }  else if(poz2=='S')
+                               {
+                                if(poz3=='V'){
+                                  if(coloana-piesa.latime<=0)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                   else{
+                                          for(i=0;i<piesa.latime;i++)
+                                            a[linie][coloana-i]=piesa.nume;
+                                             
+                                       }
+                                       l++;afisareMatrice(a);
+                                }
+                                       else if(poz3=='E')
+                                             {
+                                              if(coloana+piesa.latime>nrColoane-1)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
+                                              else {
+                                                 for(i=0;i<piesa.latime;i++)
+                                            a[linie][coloana+i]=piesa.nume;
+                                              }
+                                              l++;afisareMatrice(a);
+                                             }
+                             }
                              
-                              if(coloana+piesa.latime>nrColoane-1)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
-                              else{
-                              for(i=0;i<piesa.lungime;;i++)
-                                 a[linie+i][coloana]=piesa.nume;
-                                 if(poz2=='E')
-                                 
-                                   if(poz3=='N')
-                                     {
-                                      if(coloana-piesa.latime<nrLinii-1)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
-                                      else{
-                                       for(i=0;i=<piesa.latime;i++)
-                                        a[coloana+piesa.latime-1 -i][coloana+piesa.latime-1]=piesa.nume;
-                                           } if(poz3=='S') {
-                                      for(i=0;i=<piesa.latime;i++)
-                                         a[coloana+piesa.latime-1 +i][coloana+piesa.latime-1]=piesa.nume
-                                           }}
-                                 else if(poz2=='V')
-                                 {
-                                  
-                                  if(poz3=='N')
-                                  { if(coloana-piesa.latime<nrLinii-1)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
-                                  else {
-                                    for(i=0;i<=piesa.latime;i++)
-                                       a[linie-i][coloana]=piesa.nume;
-                                  }}
-                                  else{
-                                    if(coloana+piesa.latime<nrLinii-1)cout<<"UPS..IESE DIN MATRICE...REINCERCATI";
-                                    else{
-                                    for(i=0;i<=piesa.latime;i++)
-                                       a[linie +i][coloana]=piesa.nume;
-                                  }
-                                 }
-                                 }
-                                     }else if(poz1==V)
-                                     {
-                                          if()
+                              
+                                    
                                      }
+                               }
+                                }
                                      
 
                                      
@@ -1003,6 +1070,7 @@ int main()
                 afisareMatrice(a);
                 }
         }
+                }
                 
     
                
